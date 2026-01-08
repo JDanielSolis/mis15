@@ -182,23 +182,78 @@ body{
   margin-bottom:22px;
 }
 
-/* ===== ITINERARIO ===== */
+
+/* ===== TIMELINE VERTICAL CENTRADO ===== */
 .timeline{
-  background:var(--blanco);
-  border-radius:18px;
-  padding:20px;
+  position: relative;
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 0;
 }
 
+/* LÍNEA CENTRAL */
+.timeline::before{
+  content:'';
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:4px;
+  background: linear-gradient(
+    to bottom,
+    var(--dorado1),
+    var(--dorado2),
+    var(--dorado3),
+    var(--dorado2),
+    var(--dorado1)
+  );
+  border-radius:10px;
+}
+
+/* ITEM */
 .timeline-item{
-  display:flex;
-  justify-content:space-between;
-  padding:12px 0;
-  border-bottom:1px solid #f0d8e6;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr;
+  align-items: center;
+  margin-bottom: 38px;
 }
 
-.timeline-item:last-child{
-  border-bottom:none;
+/* PUNTO CENTRAL */
+.timeline-item::before{
+  content:'';
+  grid-column: 2;
+  width:18px;
+  height:18px;
+  background: var(--blanco);
+  border:4px solid var(--dorado1);
+  border-radius:50%;
+  margin: 0 auto;
+  z-index: 2;
+  box-shadow: 0 0 0 4px rgba(212,175,55,.25);
 }
+
+/* IZQUIERDA (HORA) */
+.timeline-time{
+  grid-column: 1;
+  text-align: right;
+  padding-right: 18px;
+  font-weight:600;
+  font-size:1.1rem;
+}
+
+/* DERECHA (DESCRIPCIÓN) */
+.timeline-desc{
+  grid-column: 3;
+  text-align: left;
+  padding-left: 18px;
+  font-size:0.95rem;
+  opacity:.85;
+}
+
+
+
 
 /* ===== MAPA ===== */
 .map-container{
@@ -306,7 +361,7 @@ body{
     <h1 id="titulo">1 Initado</h1>
     <button onclick="toggleMusic()">🎵 Música</button>
     <button onclick="confirmar()">💖 Confirmar asistencia</button>
-    <h1 id="titulo">Reservar color rosa</h1>
+    <h2>Color rosa reservado para XVñera</h2>
   </div>
 
   <!-- PADRES -->
@@ -330,8 +385,15 @@ body{
   <section class="section">
     <h3 class="foil">Ceremonia</h3>
     <div class="timeline">
-        <div class="timeline-item"><span>Viernes 30 de enero</span><span></span></div>
-        <div class="timeline-item"><span>6:00 PM</span><span>Templo · San Felipe de Jesús</span></div>
+        <div class="timeline-item">
+          <div class="timeline-time">Viernes 30 de enero</div>
+          <div class="timeline-desc">Misa</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-time">6:00 PM</span><span></span></div>
+          <div class="timeline-desc">Templo · San Felipe de Jesús</span></div>
+        </div>
     </div>
     
     <a class="map-button"
@@ -345,13 +407,38 @@ body{
   <section class="section">
     <h3 class="foil">Intinerario del evento</h3>
     <div class="timeline">
-    <div class="timeline-item"><span>Sabado 14 de fecbrero</span><span></span></div>
-      <div class="timeline-item"><span>8:00 PM</span><span>Recepción</span></div>
-      <div class="timeline-item"><span>9:00 PM</span><span>Vals</span></div>
-      <div class="timeline-item"><span>9:30 PM</span><span>Cena</span></div>
-      <div class="timeline-item"><span>10:00 PM</span><span>Fiesta</span></div>
-      <div class="timeline-item"><span>1:00 AM</span><span>Fin del evento</span></div>
+      <div class="timeline-item">
+        <div class="timeline-time">Sábado 14 de febrero</div>
+        <div class="timeline-desc">Inicio del evento</div>
+      </div>
+    
+      <div class="timeline-item">
+        <div class="timeline-time">8:00 PM</div>
+        <div class="timeline-desc">Recepción</div>
+      </div>
+    
+      <div class="timeline-item">
+        <div class="timeline-time">9:00 PM</div>
+        <div class="timeline-desc">Vals</div>
+      </div>
+    
+      <div class="timeline-item">
+        <div class="timeline-time">9:30 PM</div>
+        <div class="timeline-desc">Cena</div>
+      </div>
+    
+      <div class="timeline-item">
+        <div class="timeline-time">10:00 PM</div>
+        <div class="timeline-desc">Fiesta</div>
+      </div>
+    
+      <div class="timeline-item">
+        <div class="timeline-time">1:00 AM</div>
+        <div class="timeline-desc">Fin del evento</div>
+      </div>
     </div>
+      
+    
   </section>
 
   <!-- REGALOS -->
