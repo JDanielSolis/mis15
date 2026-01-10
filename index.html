@@ -296,16 +296,24 @@
     />    
     <!-- Animated Decorations -->
  
-    <!-- Hero Section -->
+    <!-- Main Section -->
     <section class="relative min-h-screen flex flex-col items-center justify-center px-4 py-12">
      <h2 class="font-script text-5xl md:text-7xl text-pink-500 mb-8 animate-slide-down">Mis 15 Años</h2>
      <!-- Quinceañera Photo Placeholder -->
-     <div class="mb-6 animate-fade-in delay-300">
-      <div class="w-64 h-64 md:w-80 md:h-80 rounded-full border-8 border-pink-400 shadow-2xl overflow-hidden bg-gradient-to-br from-pink-200 to-pink-100 flex items-center justify-center">
-        <img src="images/1.jpeg">
-      </div>
-     </div>
-     <h3 id="hero-name" class="font-script text-4xl md:text-6xl text-pink-500 animate-fade-in delay-500">Renee Fernanda</h3>
+     <div class="mb-10 animate-fade-in delay-300">
+  <div class="bg-white p-4 pb-10 shadow-[0_20px_50px_rgba(0,0,0,0.18)] rounded-sm transform rotate-[-2deg]">
+    <img 
+      src="images/1.jpeg" 
+      alt="Foto de Renee Fernanda"
+      class="w-64 md:w-72 h-80 object-cover"
+    >
+    <p class="mt-4 text-center font-script text-xl text-gray-600">
+      Renee Fernanda
+    </p>
+  </div>
+</div>
+
+     
     </section>
     
     <!-- Countdown Section -->
@@ -583,7 +591,7 @@
       const c = { ...defaultConfig, ...config };
 
       // Update all text content
-      document.querySelectorAll('#landing-name, #hero-name, #footer-name').forEach(el => {
+      document.querySelectorAll('#landing-name, #main-name, #footer-name').forEach(el => {
         el.textContent = c.quinceanera_name;
       });
 
