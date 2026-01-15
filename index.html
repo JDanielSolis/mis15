@@ -301,24 +301,44 @@
       </p>
 
      <h1 class="font-script text-6xl md:text-8xl text-white mb-12">Renee Fernanda</h1>
-     <!-- Envelope -->
-     <div class="relative inline-block cursor-pointer mb-8" id="envelope-container">
-      <div class="relative">
-        <!-- Envelope Body -->
-        <div class="w-96 h-64 md:w-[440px] md:h-[300px] bg-[#e29e9f] rounded-lg shadow-2xl relative overflow-hidden">
-        <!-- Envelope Details -->
-        <div class="absolute inset-0 flex items-end justify-center pb-10">
-          <p class="font-elegant text-white text-2xl z-10">
-            Click aquí para abrir
-          </p>
-        </div>
 
-        <!-- Envelope Flap -->
-        <div class="envelope-flap absolute top-0 left-0 w-full h-1/2 bg-[#d08d8a] z-30" id="envelope-flap" style="clip-path: polygon(0 0, 50% 100%, 100% 0);">
-        </div>
-       </div>
-      </div>
-     </div>
+     <!-- Envelope VIP -->
+<div class="relative inline-block cursor-pointer mb-10" id="envelope-container">
+
+  <!-- Envelope Body -->
+  <div class="w-96 h-64 md:w-[460px] md:h-[300px] bg-[#e29e9f] shadow-[0_20px_40px_rgba(0,0,0,0.18)] relative overflow-hidden border border-[#d08d8a]">
+
+    <!-- Texto interno -->
+    <div class="absolute inset-0 flex items-end justify-center pb-8 z-10 pointer-events-none">
+      <p class="font-elegant text-white text-xl tracking-wide">
+        Click aquí para abrir
+      </p>
+    </div>
+
+    <!-- Envelope Flap (doblez superior) -->
+    <div
+      id="envelope-flap"
+      class="absolute top-0 left-0 w-full h-1/2 bg-[#d08d8a] z-20 origin-top transition-transform duration-700 ease-in-out"
+      style="clip-path: polygon(0 0, 50% 92%, 100% 0);"
+    ></div>
+
+    <!-- Brillo sutil -->
+    <div class="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none"></div>
+
+    <!-- Listón horizontal detrás del sello -->
+    <div class="absolute top-1/2 left-0 w-full h-3 bg-[#d08d8a] z-20 -translate-y-1/2"></div>
+
+    <!-- Sello frontal / estrella -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-[#d08d8a] flex items-center justify-center shadow-md z-30 pointer-events-none">
+      <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2l2.39 7.26h7.61l-6.15 4.47 2.39 7.26-6.14-4.47-6.15 4.47 2.39-7.26-6.15-4.47h7.61z"/>
+      </svg>
+    </div>
+
+  </div>
+</div>
+
+
      <!-- Reserved Pass Card -->
       <div class="relative inline-block bg-white shadow-lg p-6 w-72 md:w-80 border-2 border-[#e29e9f]">
         
@@ -1025,5 +1045,16 @@
   });
 </script>
 
+<!-- Script de animación al hacer click -->
+<script>
+  const envelopeFlap_animation = document.getElementById('envelope-flap');
+  const envelopeContainer_animation = document.getElementById('envelope-container');
+
+  envelopeContainer_animation.addEventListener('click', () => {
+    envelopeFlap_animation.style.transform = envelopeFlap_animation.style.transform === 'rotateX(180deg)' 
+      ? 'rotateX(0deg)' 
+      : 'rotateX(180deg)';
+  });
+</script>
 
 </html>
